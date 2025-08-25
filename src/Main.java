@@ -1,7 +1,7 @@
 public class Main {
     enum Dimensiones {
-        LONGITUD_ARRAY(200),
-        LONGITUD_NUMEROS(5);
+        LONGITUD_ARRAY(100_000_000),
+        LONGITUD_NUMEROS(8);
 
         private final int valor;
 
@@ -15,22 +15,53 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[] listaNumeros = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
-        int longitudArray = listaNumeros.length;
+        int[] listaRadix = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
+        int[] listaQuick = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
+        int longitudArray = listaRadix.length;
 
         for (int i = 0; i < longitudArray; i++) {
-            listaNumeros[i] = (int) (Math.random() * Math.pow(10,Dimensiones.LONGITUD_NUMEROS.getValor()));
+            listaRadix[i] = (int) (Math.random() * Math.pow(10, Dimensiones.LONGITUD_NUMEROS.getValor()));
+            listaQuick[i] = listaRadix[i];
         }
+        radix(listaRadix);
+        quick(listaQuick);
+    }
 
-        for (int numero : listaNumeros){
-            System.out.print(numero+" ");
-        }
+    private static void radix(int[] arr){
+        mostrarArray(arr);
 
-        RadixSort.radixSort(listaNumeros);
+        long tiempoInicio = System.currentTimeMillis();
+        RadixSort.radixSort(arr);
+        long tiempoFin = System.currentTimeMillis();
 
+        mostrarArray(arr);
+
+        System.out.printf("\nHa tardado %d milisegundos con RadixSort\n", tiempoFin-tiempoInicio);
+    }
+
+    private static void quick(int[] arr){
+        mostrarArray(arr);
+
+        long tiempoInicio = System.currentTimeMillis();
+        QuickSort.quickSort(arr);
+        long tiempoFin = System.currentTimeMillis();
+
+        mostrarArray(arr);
+
+        System.out.printf("\nHa tardado %d milisegundos con QuickSort\n", tiempoFin-tiempoInicio);
+    }
+
+    private static void mostrarArray (int[] arr){
         System.out.println();
-        for (int numero : listaNumeros){
-            System.out.print(numero+" ");
+
+        for (int i = 0; i < 30; i++){
+            System.out.print(arr[i]+" ");
+        }
+
+        System.out.println("\n ... ");
+
+        for (int i = 0; i < 30; i++){
+            System.out.print(arr[arr.length-31+i]+" ");
         }
     }
 }
