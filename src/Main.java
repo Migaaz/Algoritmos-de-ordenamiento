@@ -1,6 +1,6 @@
 public class Main {
     enum Dimensiones {
-        LONGITUD_ARRAY(200_000_000),
+        LONGITUD_ARRAY(100_000_000),
         LONGITUD_NUMEROS(8);
 
         private final int valor;
@@ -18,16 +18,19 @@ public class Main {
         int[] listaRadix = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
         int[] listaQuick = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
         int[] listaMerge = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
+        int[] listaShell = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
         int longitudArray = listaRadix.length;
 
         for (int i = 0; i < longitudArray; i++) {
             listaRadix[i] = (int) (Math.random() * Math.pow(10, Dimensiones.LONGITUD_NUMEROS.getValor()));
             listaQuick[i] = listaRadix[i];
             listaMerge[i] = listaRadix[i];
+            listaShell[i] = listaRadix[i];
         }
         radix(listaRadix);
         quick(listaQuick);
         merge(listaMerge);
+        shell(listaShell);
     }
 
     private static void radix(int[] arr){
@@ -64,6 +67,18 @@ public class Main {
         mostrarArray(arr);
 
         System.out.printf("\nHa tardado %d milisegundos con MergeSort\n", tiempoFin-tiempoInicio);
+    }
+
+    private static void shell(int[] arr){
+        mostrarArray(arr);
+
+        long tiempoInicio = System.currentTimeMillis();
+        ShellSort.shellSort(arr);
+        long tiempoFin = System.currentTimeMillis();
+
+        mostrarArray(arr);
+
+        System.out.printf("\nHa tardado %d milisegundos con ShellSort\n", tiempoFin-tiempoInicio);
     }
 
     private static void mostrarArray (int[] arr){

@@ -17,8 +17,7 @@ public class QuickSort {
 
         for (int j = inicio; j < fin; j++) {
             if (arr[j] <= pivote) {
-                i++;
-                intercambiar(arr, i, j);
+                intercambiar(arr, ++i, j);
             }
         }
 
