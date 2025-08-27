@@ -21,13 +21,13 @@ public class QuickSort {
             }
         }
 
-        intercambiar(arr, i + 1, fin);
-        return i + 1;
+        intercambiar(arr, ++i , fin);
+        return i;
     }
 
-    private static void intercambiar (int[] arr, int i, int j){
-        int aux = arr[i];
-        arr[i] = arr [j];
-        arr[j] = aux;
+    private static void intercambiar (int[] arr, int primero, int segundo){
+        int aux = arr[primero];
+        arr[primero] = arr [segundo];
+        arr[segundo] = aux;
     }
 }

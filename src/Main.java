@@ -19,6 +19,7 @@ public class Main {
         int[] listaQuick = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
         int[] listaMerge = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
         int[] listaShell = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
+        int[] listaDualQuickSort = new int[Dimensiones.LONGITUD_ARRAY.getValor()];
         int longitudArray = listaRadix.length;
 
         for (int i = 0; i < longitudArray; i++) {
@@ -26,11 +27,13 @@ public class Main {
             listaQuick[i] = listaRadix[i];
             listaMerge[i] = listaRadix[i];
             listaShell[i] = listaRadix[i];
+            listaDualQuickSort[i] = listaRadix[i];
         }
         radix(listaRadix);
         quick(listaQuick);
         merge(listaMerge);
         shell(listaShell);
+        dualQuick(listaDualQuickSort);
     }
 
     private static void radix(int[] arr){
@@ -79,6 +82,18 @@ public class Main {
         mostrarArray(arr);
 
         System.out.printf("\nHa tardado %d milisegundos con ShellSort\n", tiempoFin-tiempoInicio);
+    }
+
+    private static void dualQuick(int[] arr){
+        mostrarArray(arr);
+
+        long tiempoInicio = System.currentTimeMillis();
+        DualQuickSort.dualQuickSort(arr);
+        long tiempoFin = System.currentTimeMillis();
+
+        mostrarArray(arr);
+
+        System.out.printf("\nHa tardado %d milisegundos con DualQuickSort\n", tiempoFin-tiempoInicio);
     }
 
     private static void mostrarArray (int[] arr){
