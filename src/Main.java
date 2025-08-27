@@ -1,7 +1,8 @@
 public class Main {
     enum Dimensiones {
         LONGITUD_ARRAY(100_000_000),
-        LONGITUD_NUMEROS(8);
+        LONGITUD_NUMEROS(8),
+        MOSTRAR_NUMERO_VALORES(10);
 
         private final int valor;
 
@@ -99,14 +100,14 @@ public class Main {
     private static void mostrarArray (int[] arr){
         System.out.println();
 
-        for (int i = 0; i < 30; i++){
+        for (int i = 0; i < Dimensiones.MOSTRAR_NUMERO_VALORES.getValor(); i++){
             System.out.print(arr[i]+" ");
         }
 
         System.out.println("\n ... ");
 
-        for (int i = 0; i < 30; i++){
-            System.out.print(arr[arr.length-31+i]+" ");
+        for (int i = 0; i < Dimensiones.MOSTRAR_NUMERO_VALORES.getValor(); i++){
+            System.out.print(arr[arr.length-(Dimensiones.MOSTRAR_NUMERO_VALORES.getValor()+1)+i]+" ");
         }
     }
 }
