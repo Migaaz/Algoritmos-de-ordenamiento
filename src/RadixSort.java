@@ -1,17 +1,17 @@
 public class RadixSort {
-    public static void radixSort(int[] arr) {
-        int valorMaximo = valorMaximo(arr);
+    public static void radixSort(int[] vector) {
+        int valorMaximo = valorMaximo(vector);
 
         for (int exp = 1; valorMaximo/exp >= 1; exp *= 10) {
-            countingSort(arr, exp);
+            countingSort(vector, exp);
         }
     }
 
-    private static void countingSort(int[] arr, int exponente) {
-        int[] aux = new int[arr.length];
+    private static void countingSort(int[] vector, int exponente) {
+        int[] aux = new int[vector.length];
         int[] repeticionDigito = new int[10];
 
-        for (int valor : arr) {
+        for (int valor : vector) {
             int digito = ((valor / exponente) % 10);
             repeticionDigito[digito]++;
         }
@@ -20,19 +20,19 @@ public class RadixSort {
             repeticionDigito[i] += repeticionDigito[i - 1];
         }
 
-        for (int i = arr.length - 1; i >= 0; i--) {
-            int digito = ((arr[i] / exponente) % 10);
-            aux[repeticionDigito[digito] - 1] = arr[i];
+        for (int i = vector.length - 1; i >= 0; i--) {
+            int digito = ((vector[i] / exponente) % 10);
+            aux[repeticionDigito[digito] - 1] = vector[i];
             repeticionDigito[digito]--;
         }
 
-        System.arraycopy(aux, 0, arr, 0, arr.length);
+        System.arraycopy(aux, 0, vector, 0, vector.length);
     }
 
-    private static int valorMaximo(int[] arr) {
-        int valorMax = arr[0];
+    private static int valorMaximo(int[] vector) {
+        int valorMax = vector[0];
 
-        for (int numeroArr : arr) {
+        for (int numeroArr : vector) {
             if (numeroArr > valorMax) {
                 valorMax = numeroArr;
             }
