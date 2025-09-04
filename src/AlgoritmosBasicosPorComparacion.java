@@ -2,9 +2,11 @@ public class AlgoritmosBasicosPorComparacion {
 
     // T(n) = Ω(n²), Θ(n²), O(n²)
     public static void selectionSort (int[] vector){
-        for (int indiceActual = 0; indiceActual < vector.length; indiceActual++){
+        int longitudVector = vector.length;
+
+        for (int indiceActual = 0; indiceActual < longitudVector; indiceActual++){
             int posicionValorMenor = indiceActual;
-            for (int indiceComparacion = indiceActual+1; indiceComparacion < vector.length; indiceComparacion++) {
+            for (int indiceComparacion = indiceActual+1; indiceComparacion < longitudVector; indiceComparacion++) {
                 if (vector[indiceComparacion] < vector[posicionValorMenor])
                     posicionValorMenor = indiceComparacion;
             }
@@ -21,11 +23,11 @@ public class AlgoritmosBasicosPorComparacion {
 
     // T(n) = Ω(n log n), - , O(n²)
     public static void shellSort(int[] vector){
-        int longitudArr = vector.length;
+        int longitudVector = vector.length;
 
-        for (int salto = longitudArr/2; salto > 0; salto /= 2 ){
+        for (int salto = longitudVector/2; salto > 0; salto /= 2 ){
 
-            for (int i = salto; i < longitudArr; i++){
+            for (int i = salto; i < longitudVector; i++){
                 int temp = vector[i];
                 int j = i;
 
