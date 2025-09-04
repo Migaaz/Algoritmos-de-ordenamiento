@@ -1,33 +1,27 @@
 public class DualQuickSort {
-    public static void main(String[] args) {
-        int[] arr = new int[]{1,3,2,0,2,7,9};
-        dualQuickSort(arr);
-
+    public static void dualQuickSort (int[] vector){
+        dualQuickSort(vector,0,vector.length-1);
     }
 
-    public static void dualQuickSort (int[] arr){
-        dualQuickSort(arr,0,arr.length-1);
-    }
-
-    private static void dualQuickSort (int[] arr, int inicio, int fin){
+    private static void dualQuickSort (int[] vector, int inicio, int fin){
         if (inicio < fin) {
-            int[] pivotes = particionar(arr, inicio, fin);
+            int[] pivotes = particionar(vector, inicio, fin);
             int indicePivote1 = pivotes[0];
             int indicePivote2 = pivotes[1];
 
-            dualQuickSort(arr, inicio, indicePivote1 - 1);
-            dualQuickSort(arr, indicePivote1 + 1, indicePivote2 - 1);
-            dualQuickSort(arr, indicePivote2 + 1, fin);
+            dualQuickSort(vector, inicio, indicePivote1 - 1);
+            dualQuickSort(vector, indicePivote1 + 1, indicePivote2 - 1);
+            dualQuickSort(vector, indicePivote2 + 1, fin);
         }
     }
 
-    private static int[] particionar(int[] arr, int inicio, int fin) {
-        if (arr[inicio] > arr[fin]){
-            intercambiar(arr,inicio,fin);
+    private static int[] particionar(int[] vector, int inicio, int fin) {
+        if (vector[inicio] > vector[fin]){
+            intercambiar(vector,inicio,fin);
         }
 
-        int pivoteInicio = arr[inicio];
-        int pivoteFin = arr[fin];
+        int pivoteInicio = vector[inicio];
+        int pivoteFin = vector[fin];
 
         int barridoInferior = inicio + 1;
         int barridoMedio = inicio + 1;
@@ -35,24 +29,24 @@ public class DualQuickSort {
 
 
         while (barridoMedio <= barridoSuperior) {
-            if (arr[barridoMedio] < pivoteInicio) {
-                intercambiar(arr, barridoMedio++, barridoInferior++);
-            } else if (arr[barridoMedio] > pivoteFin) {
-                intercambiar(arr, barridoMedio, barridoSuperior--);
+            if (vector[barridoMedio] < pivoteInicio) {
+                intercambiar(vector, barridoMedio++, barridoInferior++);
+            } else if (vector[barridoMedio] > pivoteFin) {
+                intercambiar(vector, barridoMedio, barridoSuperior--);
             } else {
                 barridoMedio++;
             }
         }
 
-        intercambiar(arr, inicio, --barridoInferior);
-        intercambiar(arr, fin, ++barridoSuperior);
+        intercambiar(vector, inicio, --barridoInferior);
+        intercambiar(vector, fin, ++barridoSuperior);
 
         return new int[]{barridoInferior, barridoSuperior};
     }
 
-    private static void intercambiar (int[] arr, int primero, int segundo){
-        int aux = arr[primero];
-        arr[primero] = arr [segundo];
-        arr[segundo] = aux;
+    private static void intercambiar (int[] vector, int primero, int segundo){
+        int aux = vector[primero];
+        vector[primero] = vector [segundo];
+        vector[segundo] = aux;
     }
 }
