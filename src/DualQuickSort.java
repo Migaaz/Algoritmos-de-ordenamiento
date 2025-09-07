@@ -1,3 +1,6 @@
+// T(n) = O(n log n) - O(n²)
+// Espacio adicional = O(log n)
+// No estable
 public class DualQuickSort {
     public static void dualQuickSort (int[] vector){
         dualQuickSort(vector,0,vector.length-1);

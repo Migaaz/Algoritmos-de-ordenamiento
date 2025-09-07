@@ -1,3 +1,6 @@
+// T(n) = O(n k) --> n = numero de elementos del vector, k = longitud del valor maximo
+// Espacio adicional = O(n)
+// Estable
 public class RadixSort {
     public static void radixSort(int[] vector) {
         int valorMaximo = valorMaximo(vector);
@@ -32,9 +35,9 @@ public class RadixSort {
     private static int valorMaximo(int[] vector) {
         int valorMax = vector[0];
 
-        for (int numeroArr : vector) {
-            if (numeroArr > valorMax) {
-                valorMax = numeroArr;
+        for (int numeroVector : vector) {
+            if (numeroVector > valorMax) {
+                valorMax = numeroVector;
             }
         }
 

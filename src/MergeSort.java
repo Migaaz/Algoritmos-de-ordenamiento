@@ -1,3 +1,6 @@
+// T(n) = O(n log n)
+// Espacio adicional = O(n)
+// Estable
 public class MergeSort {
     public static void mergeSort(int[] vector){
         if (vector.length > 1){

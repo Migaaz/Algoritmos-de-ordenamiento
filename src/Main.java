@@ -1,8 +1,8 @@
 public class Main {
     enum Dimensiones {
-        LONGITUD_ARRAY(100_000_000),
-        LONGITUD_NUMEROS(8),
-        MOSTRAR_NUMERO_VALORES(10);
+        LONGITUD_ARRAY(10),
+        LONGITUD_NUMEROS(1),
+        MOSTRAR_NUMERO_VALORES(5);
 
         private final int valor;
 

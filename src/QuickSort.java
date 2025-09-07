@@ -1,3 +1,6 @@
+// T(n) = O(n log n) - O(n²)
+// Espacio adicional = O(log n)
+// No estable
 public class QuickSort {
     public static void quickSort (int[] vector){
         quickSort(vector,0,vector.length-1);
