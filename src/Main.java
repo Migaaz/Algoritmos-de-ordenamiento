@@ -1,7 +1,7 @@
 public class Main {
     enum Dimensiones {
-        LONGITUD_ARRAY(10),
-        LONGITUD_NUMEROS(1),
+        LONGITUD_ARRAY(100_000_000),
+        LONGITUD_NUMEROS(8),
         MOSTRAR_NUMERO_VALORES(5);
 
         private final int valor;
@@ -28,58 +28,6 @@ public class Main {
             listaMerge[i] = listaRadix[i];
             listaDualQuickSort[i] = listaRadix[i];
         }
-        radix(listaRadix);
-        quick(listaQuick);
-        merge(listaMerge);
-        dualQuick(listaDualQuickSort);
-    }
-
-    private static void radix(int[] vector){
-        mostrarArray(vector);
-
-        long tiempoInicio = System.currentTimeMillis();
-        RadixSort.radixSort(vector);
-        long tiempoFin = System.currentTimeMillis();
-
-        mostrarArray(vector);
-
-        System.out.printf("\nHa tardado %d milisegundos con RadixSort\n", tiempoFin-tiempoInicio);
-    }
-
-    private static void quick(int[] vector){
-        mostrarArray(vector);
-
-        long tiempoInicio = System.currentTimeMillis();
-        QuickSort.quickSort(vector);
-        long tiempoFin = System.currentTimeMillis();
-
-        mostrarArray(vector);
-
-        System.out.printf("\nHa tardado %d milisegundos con QuickSort\n", tiempoFin-tiempoInicio);
-    }
-
-    private static void merge(int[] vector){
-        mostrarArray(vector);
-
-        long tiempoInicio = System.currentTimeMillis();
-        MergeSort.mergeSort(vector);
-        long tiempoFin = System.currentTimeMillis();
-
-        mostrarArray(vector);
-
-        System.out.printf("\nHa tardado %d milisegundos con MergeSort\n", tiempoFin-tiempoInicio);
-    }
-
-    private static void dualQuick(int[] vector){
-        mostrarArray(vector);
-
-        long tiempoInicio = System.currentTimeMillis();
-        DualQuickSort.dualQuickSort(vector);
-        long tiempoFin = System.currentTimeMillis();
-
-        mostrarArray(vector);
-
-        System.out.printf("\nHa tardado %d milisegundos con DualQuickSort\n", tiempoFin-tiempoInicio);
     }
 
     private static void mostrarArray (int[] vector){
